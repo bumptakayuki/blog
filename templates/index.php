@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>:: avana LLC | Blog ::</title>
+    <title>Tech Blog</title>
 
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 
@@ -34,13 +34,9 @@
         <!-- nav -->
         <nav role="header-nav" class="navy">
             <h1>CODEBASE</h1>
-            <ul>
-                <li><a href="index.html" title="Work">Work</a></li>
-                <li><a href="about.html" title="About">About</a></li>
-                <li class="nav-active"><a href="blog.html" title="Blog">Blog</a></li>
-                <li><a href="contact.html" title="Contact">Contact</a></li>
-            </ul>
         </nav>
+        <span style="float: right"><?= $_SESSION['user']['username']?>さん</span><br>
+        <a style="float: right" href="logout">ログアウト</a>
         <!-- nav -->
     </div>
 </header>
@@ -54,7 +50,7 @@
         <div class="col-xs-12 ">
             <article role="pge-title-content" class="blog-header">
                 <header>
-                    <h2><span>Tech Board</span> 技術情報を投稿しようぜ</h2>
+                    <h2><span>Tech Blog</span> 技術情報を投稿しようぜ</h2>
                 </header>
             </article>
         </div>
@@ -67,7 +63,7 @@
                 <?php } ?>
             </div>
 
-            <form method="post" enctype="multipart/form-data" action="board/new" name="cform" id="cform">
+            <form method="post" enctype="multipart/form-data" action="article/new" name="cform" id="cform">
                 <div class="row">
 
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
@@ -102,7 +98,7 @@
                 <ul class="grid-lod effect-2" id="grid">
                     <li>
                         <section class="blog-content">
-                            <a href="blog-details.html">
+                            <a href="article/show/<?= $post['id'] ?>">
                                 <figure>
                                     <div class="post-date">
 
@@ -110,7 +106,6 @@
                                         <span style="font-size: 18px"><?= date_format(new DateTime($post['created_at']), 'H:i:s');?></span>
                                     </div>
                                     <img src="/img/<?= $post['filename'] ?>" class="img-responsive">
-                                    <!--                                    <img src="images/blog-images/blog-2.jpg" alt="" class="img-responsive"/>-->
                                 </figure>
                             </a>
                             <article>
@@ -120,21 +115,6 @@
                             </article>
                         </section>
                     </li>
-<!--                    <li>-->
-<!--                        <section class="blog-content">-->
-<!--                            <a href="blog-details.html">-->
-<!--                                <figure>-->
-<!--                                    <div class="post-date">-->
-<!--                                        <span>24</span> July 2016-->
-<!--                                    </div>-->
-<!--                                    <img src="/images/blog-images/blog-1.jpg" alt="" class="img-responsive"/>-->
-<!--                                </figure>-->
-<!--                            </a>-->
-<!--                            <article>-->
-<!--                                This is a sample news post title content or sample post heading.-->
-<!--                            </article>-->
-<!--                        </section>-->
-<!--                    </li>-->
                 </ul>
             </div>
         <?php endforeach; ?>
@@ -146,9 +126,7 @@
 <footer role="footer">
     <!-- logo -->
     <h1>
-        <a href="index.html" title="avana LLC">
 Tech
-        </a>
     </h1>
     <!-- logo -->
 
@@ -190,7 +168,7 @@ Tech
 
 <!-- jquery.countdown -->
 
-<script src="js/html5shiv.js" type="text/javascript"></script>
+<script src="/js/html5shiv.js" type="text/javascript"></script>
 
 <script>
     $(function(){
